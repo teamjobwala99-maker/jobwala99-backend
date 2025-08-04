@@ -10,7 +10,7 @@ import gspread
 # TODO: PASTE YOUR ANDROID CLIENT ID HERE
 # You can find this in your Google Cloud Console -> APIs & Services -> Credentials
 # It's the one with the type "Android".
-ANDROID_CLIENT_ID = "PASTE_YOUR_ANDROID_CLIENT_ID_HERE"
+ANDROID_CLIENT_ID = "431652515727-bt80bpas52jp1b6qg6jsmse103q472im.apps.googleusercontent.com"
 
 # The email of the service account you created and shared your sheet with
 SERVICE_ACCOUNT_EMAIL = "sheets-editor-for-jobwala99@sublime-vial-467111-q4.iam.gserviceaccount.com"
