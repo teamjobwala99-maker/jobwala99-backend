@@ -7,9 +7,7 @@ import gspread
 
 # --- CONFIGURATION ---
 
-# TODO: PASTE YOUR ANDROID CLIENT ID HERE
-# You can find this in your Google Cloud Console -> APIs & Services -> Credentials
-# It's the one with the type "Android".
+# Your verified Android Client ID
 ANDROID_CLIENT_ID = "431652515727-bt80bpas52jp1b6qg6jsmse103q472im.apps.googleusercontent.com"
 
 # The email of the service account you created and shared your sheet with
@@ -23,7 +21,6 @@ EMPLOYER_TAB_NAME = "Employers"
 
 app = Flask(__name__)
 
-# This is the main function that will be called by your Android app
 @app.route("/", methods=["POST"])
 def save_employer_data():
     try:
@@ -56,10 +53,10 @@ def save_employer_data():
         next_id = _generate_next_employer_id(worksheet)
 
         # 5. Prepare the row data to be inserted
-        headers = worksheet.row_values(1) # Get headers from the first row
-        
+        headers = worksheet.row_values(1)
+
         current_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
+
         row_to_insert = []
         for header in headers:
             if header == "Date":
@@ -83,7 +80,7 @@ def save_employer_data():
 def _generate_next_employer_id(worksheet):
     """Fetches all employer IDs and calculates the next one."""
     try:
-        all_ids = worksheet.col_values(2) # Assuming 'Employer ID' is in the 2nd column (B)
+        all_ids = worksheet.col_values(2)
         numeric_ids = [int(id_str[3:]) for id_str in all_ids if id_str.startswith("EMP") and id_str[3:].isdigit()]
         if not numeric_ids:
             return "EMP0001"
