@@ -44,7 +44,7 @@ def save_employer_data():
             return jsonify({"error": "Invalid user token"}), 403
 
         # Connect to Google Sheets using the service account
-        gc = gspread.service_account()
+        gc = gspread.service_account(filename="service_account.json")
         spreadsheet = gc.open_by_key(EMPLOYER_SHEET_ID)
         worksheet = spreadsheet.worksheet(EMPLOYER_TAB_NAME)
 
